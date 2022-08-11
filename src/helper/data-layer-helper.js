@@ -214,7 +214,7 @@ class DataLayerHelper {
     for (let i = 0; i < startingLength; i++) {
      // Run the commands one at a time to maintain the correct
      // length of the queue on each command.
-     this.processStates_([this.dataLayer_[i]], !(this.listenToPast_));
+      this.processStates_([this.dataLayer_[i]], !(this.listenToPast_));
     }
   }
 
@@ -236,7 +236,17 @@ class DataLayerHelper {
     }
     return target;
   }
-
+   /**
+    * Returns the current state of the helper's
+    * abstract model.
+    *
+    * @return {*} Internal model.
+    * @export
+    */
+  getComputedState() {
+    const model = Object.assign({}, this.model_);
+    return model;
+  }
   /**
    * Flattens the dataLayer's history into a single object that represents the
    * current state. This is useful for long running apps, where the dataLayer's
